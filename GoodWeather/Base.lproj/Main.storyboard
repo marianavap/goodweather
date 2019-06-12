@@ -70,17 +70,48 @@
             </objects>
             <point key="canvasLocation" x="926.08695652173924" y="154.6875"/>
         </scene>
-        <!--AddCity-->
+        <!--Add City-->
         <scene sceneID="S09-JM-RRG">
             <objects>
                 <viewController id="F7u-95-BM6" customClass="AddWeatherCityViewController" customModule="GoodWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="b94-vw-fbf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zfn-0B-JT4">
+                                <rect key="frame" x="20" y="150" width="374" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J2b-hO-g6B">
+                                <rect key="frame" x="190" y="198" width="34" height="30"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveCityButtonPressed" destination="F7u-95-BM6" eventType="touchUpInside" id="Yhq-W3-c18"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="zfn-0B-JT4" firstAttribute="trailing" secondItem="b94-vw-fbf" secondAttribute="trailingMargin" id="25z-Yd-lQX"/>
+                            <constraint firstItem="zfn-0B-JT4" firstAttribute="leading" secondItem="b94-vw-fbf" secondAttribute="leadingMargin" id="NKr-Wg-2xj"/>
+                            <constraint firstItem="zfn-0B-JT4" firstAttribute="top" secondItem="6vG-Lj-DF9" secondAttribute="top" constant="62" id="oy1-D3-wKc"/>
+                            <constraint firstItem="J2b-hO-g6B" firstAttribute="top" secondItem="zfn-0B-JT4" secondAttribute="bottom" constant="18" id="v8Q-gv-YrR"/>
+                            <constraint firstItem="zfn-0B-JT4" firstAttribute="centerX" secondItem="J2b-hO-g6B" secondAttribute="centerX" id="yc5-Kx-44d"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6vG-Lj-DF9"/>
                     </view>
-                    <navigationItem key="navigationItem" title="AddCity" id="HAU-qT-2AN"/>
+                    <navigationItem key="navigationItem" title="Add City" id="HAU-qT-2AN">
+                        <barButtonItem key="leftBarButtonItem" title="Close" id="ro2-oh-xES">
+                            <connections>
+                                <action selector="close" destination="F7u-95-BM6" id="qOv-WL-c0N"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="cityNameTextField" destination="zfn-0B-JT4" id="LBG-XW-FlP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hcn-iY-LmX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
