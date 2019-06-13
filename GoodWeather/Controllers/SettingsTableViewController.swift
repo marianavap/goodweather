@@ -19,6 +19,11 @@ class SettingTableViewController: UITableViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
+    @IBAction func done() {
+        self.dismiss(animated: true, completion: nil)
+        
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -34,6 +39,10 @@ class SettingTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier:"SettingCell", for: indexPath)
         
         cell.textLabel?.text = settingsItem.displayName
+        
+        if settingsItem == self.settingsViewModel.selectedUnit {
+            cell.accessoryType = .checkmark
+        }
         
         return cell
     }
