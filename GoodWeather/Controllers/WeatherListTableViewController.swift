@@ -11,15 +11,17 @@ import UIKit
 
 class WeatherListTableViewController: UITableViewController, AddWeatherDelegate {
     
+    private var weatherListViewModel = WeatherListViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
-    
     func addWeatherDidSave(vm: WeatherViewModel) {
-        print(vm.name)
+        self.weatherListViewModel.addWeatherViewModel(vm)
+        self.tableView.reloadData()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -27,7 +29,7 @@ class WeatherListTableViewController: UITableViewController, AddWeatherDelegate 
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return self.weatherListViewModel.numberOfRows(section)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -50,8 +52,9 @@ class WeatherListTableViewController: UITableViewController, AddWeatherDelegate 
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherCell", for: indexPath) as! WeatherCell
         
-        cell.cityNameLabel.text = "Houston"
-        cell.temperatureLabel.text = "70°"
+        let weatherVM = self.weatherListViewModel.modelAt(indexPath.row)
+        
+        cell.configure(weatherVM)
         
         return cell
     }
