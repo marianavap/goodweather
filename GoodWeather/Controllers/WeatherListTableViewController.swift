@@ -41,7 +41,21 @@ class WeatherListTableViewController: UITableViewController, AddWeatherDelegate 
             prepareSegueForAddWeatherCityViewController(segue: segue)
         } else if segue.identifier == "SettingsTableViewController" {
             prepareSegueForSettingsTableViewController(segue: segue)
+        } else if segue.identifier == "WeatherDetailsViewController" {
+            prepareSegueForWeatherDetailViewController(segue: segue)
         }
+    }
+    
+    func prepareSegueForWeatherDetailViewController (segue: UIStoryboardSegue) {
+        
+        guard let weatherDetailsVC = segue.destination as? WeatherDetailsViewController,
+            let indexPath = self.tableView.indexPathForSelectedRow else {
+                return
+        }
+        
+        let weatherVM = self.weatherListViewModel.modelAt(indexPath.row)
+        weatherDetailsVC.weatherViewModel = weatherVM
+        
     }
     
     private func prepareSegueForAddWeatherCityViewController (segue: UIStoryboardSegue) {
